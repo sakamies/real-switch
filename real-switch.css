@@ -3,79 +3,67 @@
 /*TODO: make a fake switch that has animation for changing value from 0 to 1*/
 .switch {
   display: inline-block;
+  position: relative;
+  width: 51px;
+  height: 30px
 }
 .real-switch {
   -webkit-appearance: none;
   display: block;
   vertical-align: middle;
   position: relative;
-  width: 51px;
   width: 72px;
-  height: 30px;
-  /*margin: 0 0 -30px 0;*/
+  height: 100%;
+  margin: 0;
   background: none;
+  border: none;
+  box-shadow: none;
   pointer-events: none;
 }
 .real-switch.checked {
   left: -21px;
 }
-.fake-switch {
-  display: block;
-  position: relative;
-  vertical-align: middle;
-  width: 51px;
-  height: 30px;
-  border-radius: 31px;
-  pointer-events: none;
-}
 
-/* Background */
+/* Background
+  The real-switch thumb represents the whole switch, only the thumb is fake.
+*/
 .real-switch::-webkit-slider-runnable-track {
   -webkit-appearance: none;
   height: 30px;
-  border-radius: 30px;
-  box-shadow: inset 0px 0px 0px 1px #999;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
-.fake-switch .track {
+.real-switch::-webkit-slider-thumb {
+  -webkit-appearance: none;
   display: block;
+  width: 51px;
   height: 30px;
   border-radius: 30px;
+  border: none;
+  background: none;
   box-shadow:
-    inset 0px 0px 0px 2px black,
-    inset 0px 0px 0px 0px black;
-  opacity: .22;
+    inset 0px 0px 0px 2px hsl(110, 0%, 88%),
+    inset 0px 0px 0px 0px hsl(110, 0%, 88%);
   transition: all .33s ease;
 /*  transition: all .28s cubic-bezier(0.15, 0.46, 0.37, 1);*/
+  pointer-events: all;
 }
-.real-switch:active + .fake-switch .track {
+.real-switch:active::-webkit-slider-thumb {
   box-shadow:
-    inset 0px 0px 0px 17px black,
-    inset 36px 0px 0px 17px black;
+    inset 0px 0px 0px 17px hsl(110, 0%, 88%),
+    inset 36px 0px 0px 17px hsl(110, 0%, 88%);
 }
-.real-switch.checked + .fake-switch .track,
-.real-switch.checked:active + .fake-switch .track {
+.real-switch.checked::-webkit-slider-thumb {
   box-shadow:
     inset 0px 0px 0px 17px hsl(110, 52%, 60%),
     inset 36px 0px 0px 0px hsl(110, 52%, 60%);
   /*transition: all .28s cubic-bezier(0.15, 0.46, 0.37, 1);*/
 }
-.real-switch.checked + .fake-switch .track {
-  opacity: 1;
-}
 
 
 /* Thumb */
-.real-switch::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 30px;
-  width: 51px;
-  height: 30px;
-  border-radius: 30px;
-  box-shadow: inset 0px 0px 0px 1px #666;
-  pointer-events: all;
-}
-.real-switch + .fake-switch .thumb {
-  -webkit-appearance: none;
+.fake-thumb {
   position: absolute;
   top: 2px;
   left: 2px;
@@ -95,18 +83,18 @@
   transition-duration: .33s, .33s;
   transition-timing-function: ease, ease;
   transition-delay: 0, 0;
-  pointer-events: all;
+  pointer-events: none;
 }
-.real-switch:focus + .fake-switch .thumb {
+:focus + .fake-thumb {
 }
-.real-switch:active + .fake-switch .thumb {
+:active + .fake-thumb {
   width: 35px;
 }
-.real-switch.checked + .fake-switch .thumb {
+.checked + .fake-thumb {
   left: 23px;
   /*-webkit-transform: translateX(22px);*/
 }
-.real-switch.checked:active + .fake-switch .thumb {
+.checked:active + .fake-thumb {
   left: 14px;
   /*-webkit-transform: translateX(15px);*/
 }
