@@ -1,35 +1,35 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>One switch to rule them all</title>
-	<link rel="stylesheet" type="text/css" href="real-switch.css">
-	<link rel="stylesheet" href="reset.css">
-	<script src="fastclick.js"></script>
-	<!-- Use your favourite method to remove click delay on mobile, or not. -->
-	<script src="real-switch.js"></script>
+  <meta charset="UTF-8">
+  <title>One switch to rule them all</title>
+  <link rel="stylesheet" type="text/css" href="real-switch.css">
+  <link rel="stylesheet" href="reset.css">
+  <script src="fastclick.js"></script>
+  <!-- Use your favourite method to remove click delay on mobile, or not. -->
+  <script src="real-switch.js"></script>
 </head>
 <body>
 
-	<form>
-		<h1>
-			A Real switch for the web
-		</h1>
+  <form>
+    <h1>
+      A Real switch for the web
+    </h1>
 
-		<div>
-			<label for="try-me">
-				Switch me:
-			</label>
-			<span class="switch">
-				<input tabindex="0" id="try-me" class="real-switch" type="range" value="0" min="0" max="1" step="1">
-				<span class="fake-thumb"></span>
-			</span>
-		</div>
+    <div class="form-row">
+      <label for="try-me">
+        Switch me:
+      </label>
+      <span class="switch input">
+        <input tabindex="0" id="try-me" class="real-switch" type="range" value="0" min="0" max="1" step="1">
+        <span class="fake-thumb"></span>
+      </span>
+    </div>
 
-		<p>
-			Imagine this: A switch is not a checkbox. It's a range from 0 to 1, with a step of 1. If you apply this in practice, we get almost all of the behavior of a switch free. The only additions we need are a click handler and keyboard handler to sprinkle in some accessibility. As a sweetener, let's add some fancy css.
-		</p>
-	</form>
+    <p class="info">
+      Imagine this: A switch is not a checkbox. It's a range from 0 to 1, with a step of 1. If you apply this in practice, we get almost all of the behavior of a switch free. The only additions we need are a click handler and keyboard handler to sprinkle in some accessibility. As a sweetener, let's add some fancy css.
+    </p>
+  </form>
 
 </body>
 </html>
