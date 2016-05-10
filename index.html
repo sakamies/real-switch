@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>One switch to rule them all</title>
-  <link rel="stylesheet" type="text/css" href="real-switch.css">
+  <link rel="stylesheet" type="text/css" href="input-switch.css">
   <link rel="stylesheet" href="reset.css">
   <script src="fastclick.js"></script>
   <!-- Use your favourite method to remove click delay on mobile, or not. -->
-  <script src="real-switch.js"></script>
+  <script src="input-switch.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var realSwitch = new RangeSwitch(document.querySelector('#switchme'));
+    })
+  </script>
 </head>
 <body>
 
@@ -20,9 +25,9 @@
       <label for="try-me">
         Switch me:
       </label>
-      <span class="switch input">
-        <input tabindex="0" id="try-me" class="real-switch" type="range" value="0" min="0" max="1" step="1">
-        <span class="fake-thumb"></span>
+      <span id="switchme" class="input-switch">
+        <input tabindex="0" id="switchme" type="range" value="0" min="0" max="1" step="1">
+        <span class="thumb"></span>
       </span>
     </div>
 

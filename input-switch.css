@@ -1,13 +1,10 @@
-/* the important bits first */
-
-/*TODO: make a fake switch that has animation for changing value from 0 to 1*/
-.switch {
+.input-switch {
   display: inline-block;
   position: relative;
   width: 51px;
   height: 30px
 }
-.real-switch {
+.input-switch input[type="range"] {
   -webkit-appearance: none;
   display: block;
   vertical-align: middle;
@@ -20,21 +17,17 @@
   box-shadow: none;
   pointer-events: none;
 }
-.real-switch.checked {
+.input-switch input[type="range"].checked {
   left: -21px;
 }
-
-/* Background
-  The real-switch thumb represents the whole switch, only the thumb is fake.
-*/
-.real-switch::-webkit-slider-runnable-track {
+.input-switch input[type="range"]::-webkit-slider-runnable-track {
   -webkit-appearance: none;
   height: 30px;
   background: none;
   border: none;
   box-shadow: none;
 }
-.real-switch::-webkit-slider-thumb {
+.input-switch input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   display: block;
   width: 51px;
@@ -46,28 +39,23 @@
     inset 0px 0px 0px 2px hsl(110, 0%, 88%),
     inset 0px 0px 0px 0px hsl(110, 0%, 88%);
   transition: all .33s ease;
-/*  transition: all .28s cubic-bezier(0.15, 0.46, 0.37, 1);*/
   pointer-events: all;
 }
-.real-switch:active::-webkit-slider-thumb {
+.input-switch input[type="range"]:active::-webkit-slider-thumb {
   box-shadow:
     inset 0px 0px 0px 17px hsl(110, 0%, 88%),
     inset 36px 0px 0px 17px hsl(110, 0%, 88%);
 }
-.real-switch.checked::-webkit-slider-thumb {
+.input-switch input[type="range"].checked::-webkit-slider-thumb {
   box-shadow:
     inset 0px 0px 0px 17px hsl(110, 52%, 60%),
     inset 36px 0px 0px 0px hsl(110, 52%, 60%);
-  /*transition: all .28s cubic-bezier(0.15, 0.46, 0.37, 1);*/
 }
-
-
-/* Thumb */
-.fake-thumb {
+/* Needed to fake the thumb with an inert span because the thumb can't be transitioned with css */
+.input-switch .thumb {
   position: absolute;
   top: 2px;
   left: 2px;
-  /*-webkit-transform: translateX(1px);*/
   display: block;
   width: 26px;
   height: 26px;
@@ -85,19 +73,15 @@
   transition-delay: 0, 0;
   pointer-events: none;
 }
-:focus + .fake-thumb {
+.input-switch :focus + .thumb {
 }
-:active + .fake-thumb {
+.input-switch :active + .thumb {
   width: 35px;
 }
-.checked + .fake-thumb {
+/* Using absolute positioning because transforms didn't work as well. Using .checked class instead of attribute selector because attribute selector by 1 or 0 didn't work at all. */
+.input-switch .checked + .thumb {
   left: 23px;
-  /*-webkit-transform: translateX(22px);*/
 }
-.checked:active + .fake-thumb {
+.input-switch .checked:active + .thumb {
   left: 14px;
-  /*-webkit-transform: translateX(15px);*/
 }
-
-
-
